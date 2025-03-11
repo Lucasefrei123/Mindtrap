@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>KYKS - Case 1</title>
+</head>
+<body>
+    <h1>Kyks - Case 1</h1>
+
+    <div id="choice-container">
+        <button onclick="showQuestion(1)">1</button>
+        <button onclick="showQuestion(2)">2</button>
+        <button onclick="showQuestion(3)">3</button>
+    </div>
+
+    <div id="question-container" style="display: none;">
+        <h2 id="question-text"></h2>
+        <p><strong>Temps restant : <span id="timer">1:30</span></strong></p>
+        <input type="text" id="answer" placeholder="Entrez votre réponse">
+        <button onclick="checkAnswer()">Valider</button>
+        <p id="feedback"></p>
+    </div>
+
+    <p id="code-container" style="display: none;"><strong>Chiffre obtenu pour le cadenas :</strong> <span id="code-number"></span></p>
+
+    <button onclick="window.location.href='game.html'">Retour au plateau</button>
+
+    <script>
+        
+        const questions = {
+            "1": { text: "Quelle est la capitale de la France ?", answer: "paris", code: "7" },
+            "2": { text: "Combien font 2 + 2 ?", answer: "4", code: "3" },
+            "3": { text: "Quel est le plus grand océan ?", answer: "pacifique", code: "9" }
+        };
+
+        let currentQuestion = null;
+        let attemptsLeft = 3;
+        let timer;
+        let timeLeft = 90; 
+
+        function showQuestion(num) {
+            currentQuestion = num;
+            document.getElementById("question-text").innerText = questions[num].text;
+            document.getElementById("question-container").style.display = "block";
+            document.getElementById("feedback").innerText = "";
+            document.getElementById("choice-container").style.display = "none"; 
+            attemptsLeft = 3; 
+
+            
+            startTimer();
+        }
+
+        function startTimer() {
+            clearInterval(timer); 
+            timeLeft = 90;
+            updateTimerDisplay();
+
+            timer = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    disableInput("⏳ Temps écoulé ! Vous ne pouvez plus répondre.");
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            document.getElementById("timer").innerText = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+        }
+
+        function checkAnswer() {
+            let userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+            let correctAnswer = questions[currentQuestion].answer.toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                clearInterval(timer); 
+                document.getElementById("feedback").innerHTML = "<span style='color: green;'>Bonne réponse ! 🎉</span>";
+                document.getElementById("code-number").innerText = questions[currentQuestion].code;
+                document.getElementById("code-container").style.display = "block";
+                disableInput("✔️ Bravo ! Vous avez obtenu un chiffre du cadenas.");
+            } else {
+                attemptsLeft--;
+                if (attemptsLeft > 0) {
+                    document.getElementById("feedback").innerHTML = `<span style='color: red;'>Mauvaise réponse. Il vous reste ${attemptsLeft} tentatives.</span>`;
+                } else {
+                    disableInput("❌ Plus de tentatives restantes !");
+                }
+            }
+        }
+
+        function disableInput(message) {
+            document.getElementById("answer").disabled = true;
+            document.querySelector("button[onclick='checkAnswer()']").disabled = true;
+            document.getElementById("feedback").innerHTML = `<span style='color: red;'>${message}</span>`;
+        }
+    </script>
+</body>
+</html>
