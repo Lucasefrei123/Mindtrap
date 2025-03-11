@@ -1,0 +1,187 @@
+/* Styles globaux */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: #121212; /* Fond noir */
+    color: #FFD700; /* Texte doré */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+}
+
+/* button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    background: #121212;
+    color: #FFD700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+} */
+
+.button1 {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    background: green;
+    color: #FFD700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.button2 {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    background: #121212;
+    color: #FFD700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button3 {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    background: #121212;
+    color: #FFD700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.7);
+    margin-bottom: 30px;
+}
+
+/* Conteneur des choix */
+#choice-container {
+    display: flex;
+    flex-direction: column ;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* .choice-btn {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    border: 2px solid #FFD700;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #222222, #1a1a1a);
+    color: #FFD700;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 3px 3px 10px rgba(255, 215, 0, 0.5);
+} */
+
+/* .choice-btn:hover {
+    background: #FFD700;
+    color: black;
+    transform: scale(1.05);
+} */
+
+/* Conteneur des questions */
+#question-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    margin: 30px auto;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+/* Champ de réponse */
+input[type="text"] {
+    padding: 12px;
+    font-size: 1.3rem;
+    width: 80%;
+    border: 2px solid #FFD700;
+    border-radius: 8px;
+    background: transparent;
+    color: #FFD700;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Bouton de validation */
+.validate-btn {
+    margin-top: 15px;
+    padding: 15px 25px;
+    font-size: 1.3rem;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #222222, #1a1a1a);
+    color: #FFD700;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 3px 3px 10px rgba(255, 215, 0, 0.5);
+    display: inline-block;
+}
+
+.validate-btn:hover {
+    background: #FFD700;
+    color: black;
+    transform: scale(1.05);
+}
+
+/* Bouton retour */
+.return-btn {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 1.3rem;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #222222, #1a1a1a);
+    color: #FFD700;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 3px 3px 10px rgba(255, 215, 0, 0.5);
+}
+
+.return-btn:hover {
+    background: #FFD700;
+    color: black;
+    transform: scale(1.05);
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#question-container, #code-container {
+    animation: fadeIn 1s ease-in-out;
+}
