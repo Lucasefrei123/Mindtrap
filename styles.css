@@ -1,14 +1,19 @@
-/* Styles globaux */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
     font-family: 'Arial', sans-serif;
 }
 
 body {
     background: #121212; /* Fond noir */
     color: #FFD700; /* Texte doré */
+
+}
+
+ main{
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -171,6 +176,7 @@ input[type="text"] {
 }
 
 /* Animation d'apparition */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -182,6 +188,27 @@ input[type="text"] {
     }
 }
 
-#question-container, #code-container {
+
+#titre, #container-p1 {
     animation: fadeIn 1s ease-in-out;
+}
+
+
+@media (max-width: 600px) {
+    #titre h1 {
+        font-size: 2.5rem;
+    }
+
+    #container-p1 {
+        padding: 20px;
+    }
+
+    #container-p1 h2 {
+        font-size: 1.2rem;
+    }
+
+    input[type="number"] {
+        font-size: 1rem;
+        padding: 10px;
+    }
 }
